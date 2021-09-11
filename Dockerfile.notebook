@@ -1,0 +1,33 @@
+FROM jupyter/datascience-notebook:ubuntu-20.04
+USER root
+
+RUN pip install --upgrade pip
+RUN pip install jupyterlab
+
+ENV LANG ja_JP.UTF-8
+ENV LC_ALL ja_JP.UTF-8
+RUN sed -i '$d' /etc/locale.gen \
+  && echo "ja_JP.UTF-8 UTF-8" >> /etc/locale.gen \
+  && locale-gen ja_JP.UTF-8 \
+  && /usr/sbin/update-locale LANG=ja_JP.UTF-8 LANGUAGE="ja_JP:ja"
+RUN /bin/bash -c "source /etc/default/locale"
+RUN ln -sf  /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
+
+RUN apt-get update && apt-get install -y \
+  fonts-ipaexfont
+
+RUN conda install -c conda-forge r-stanheaders -y
+RUN conda install -c r r-rstan -y
+RUN conda install -c conda-forge r-bh=1.72.0_3 -y
+RUN conda install -c conda-forge r-survey -y
+RUN conda install -c r r-reshape -y
+RUN conda install -c conda-forge r-ggmcmc -y
+RUN conda install -c r r-car -y
+RUN conda install -c r r-psych -y
+RUN conda install -c conda-forge r-bwstest -y
+RUN conda install -c conda-forge pystan
+RUN conda install -c conda-forge arviz -y
+RUN conda install -c anaconda openpyxl -y
+RUN conda install -c conda-forge r-desolve -y
+RUN pip install japanize-matplotlib
+RUN pip install pydataset
