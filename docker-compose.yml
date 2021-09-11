@@ -5,7 +5,7 @@ services:
       context: .
       dockerfile: Dockerfile.notebook
     ports:
-      - "1234:8888"
+      - "8888:8888"
     restart: always
     environment:
       - JUPYTER_ENABLE_LAB=yes
