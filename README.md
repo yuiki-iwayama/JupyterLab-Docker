@@ -6,15 +6,15 @@
 - Pystan，Rstan環境を構築
 
 ## 動作環境（確認済）
-- macOS BigSur
-- Docker Desktop(macOS)
+- macOS BigSur 11.5.1
+- Docker Desktop(macOS) 20.10.7
 
 ## Install
-"""
+```
 git clone git@github.com:yuiki-iwayama/JupyterLab-Docker.git
 cd JupyterLab-Docker
 docker-compose up -d --build
-"""
+```
 
 ## Usage
 http://localhost:8888
