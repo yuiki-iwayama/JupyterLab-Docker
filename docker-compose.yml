@@ -8,7 +8,35 @@ services:
       - "8888:8888"
     restart: always
     environment:
+      - GRANT_SUDO=yes
       - JUPYTER_ENABLE_LAB=yes
+      - PG_PORT=5432
     volumes:
       - ./work:/home/jovyan/work
     command: start-notebook.sh --NotebookApp.token=''
+    depends_on:
+      - db
+    links:
+      - db
+
+  db:
+    image: postgres:13.0-alpine
+    restart: always
+    ports:
+      - "15432:5432"
+    restart: always
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_INITDB_ARGS: “--encoding=UTF-8 --locale=ja_JP.UTF-8"
+    volumes:
+      - ./db-data:/var/lib/postgresql/data
+      - ./docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+    stdin_open: true
+    tty: true
+
+volumes:
+  db-data:
+    driver: local
+  work:
+    driver: local

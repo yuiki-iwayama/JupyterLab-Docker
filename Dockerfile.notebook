@@ -1,9 +1,6 @@
 FROM jupyter/datascience-notebook:ubuntu-20.04
 USER root
 
-RUN pip install --upgrade pip
-RUN pip install jupyterlab
-
 # encodingとtimezoneの設定
 ENV LANG ja_JP.UTF-8
 ENV LC_ALL ja_JP.UTF-8
@@ -14,25 +11,19 @@ RUN sed -i '$d' /etc/locale.gen \
 RUN /bin/bash -c "source /etc/default/locale"
 RUN ln -sf  /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
 
-# 日本語フォントのインストール
-RUN apt-get update && apt-get install -y \
-  fonts-ipaexfont
+RUN sudo apt-get update && apt-get install -y \
+  fonts-ipaexfont \
+  libpq-dev \
+  python-dev
 
 # condaでインストールするライブラリ
-RUN conda install -c conda-forge r-stanheaders -y \
-  && conda install -c r r-rstan -y \
-  && conda install -c conda-forge r-bh=1.72.0_3 -y \
-  && conda install -c conda-forge r-survey -y \
-  && conda install -c r r-reshape -y \
-  && conda install -c conda-forge r-ggmcmc -y \
-  && conda install -c r r-car -y \
-  && conda install -c r r-psych -y \
-  && conda install -c conda-forge r-bwstest -y \
-  && conda install -c conda-forge pystan \
+RUN conda install -c conda-forge pystan \
   && conda install -c conda-forge arviz -y \
-  && conda install -c anaconda openpyxl -y \
-  && conda install -c conda-forge r-desolve -y
+  && conda install -c anaconda openpyxl -y
 
 # pipでインストールするライブラリ
-RUN pip install japanize-matplotlib \
-  && pip install pydataset
+ RUN pip install --upgrade pip \
+  && pip install jupyterlab \
+  && pip install japanize-matplotlib \
+  && pip install psycopg2-binary \
+  && pip install ipython-sql
