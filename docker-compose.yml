@@ -26,6 +26,7 @@ services:
     environment:
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: admin
+      POSTGRES_DB: analysis
       POSTGRES_INITDB_ARGS: “--encoding=UTF-8 --locale=ja_JP.UTF-8"
     volumes:
       - ./db-data:/var/lib/postgresql/data

@@ -19,13 +19,14 @@ docker-compose up -d --build
 ## Usage
 - JupyterLab
 http://localhost:8888
+
 - JupyterLabからSQLを動かす
 ```
 # SQL の拡張機能を呼び出す
 %load_ext sql
 
 # DB 接続に必要な engine を取得
-dsl = 'postgres://{user}:{password}@{host}:{port}/{database}'.format(**pgconfig)
+dsl = 'postgres://{user}:{password}@{hostname}/{database}'
 
 # sql に接続
 %sql $dsl
