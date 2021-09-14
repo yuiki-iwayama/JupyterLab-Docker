@@ -1,9 +1,9 @@
-# JupyterLab-Docker
+# JupyterLab-SQL-Docker
 
 ## Overview
-- ubuntuベースである
+- JupyterLab-PostgreSQLの相互環境
 - encodingはja_JP.UTF-8に設定，timizoneはAsia/Tokyoに設定
-- Pystan，Rstan環境を構築
+- pystan 2.19.1.1も動かせる
 
 ## 動作環境（確認済）
 - macOS BigSur 11.5.1
@@ -17,7 +17,19 @@ docker-compose up -d --build
 ```
 
 ## Usage
+- JupyterLab
 http://localhost:8888
+- JupyterLabからSQLを動かす
+```
+# SQL の拡張機能を呼び出す
+%load_ext sql
+
+# DB 接続に必要な engine を取得
+dsl = 'postgres://{user}:{password}@{host}:{port}/{database}'.format(**pgconfig)
+
+# sql に接続
+%sql $dsl
+```
 
 ## Document
 - workディレクトリを配置
