@@ -21,10 +21,8 @@ services:
 
   db:
     image: postgres:13.0-alpine
-    restart: always
     ports:
       - "15432:5432"
-    restart: always
     environment:
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: admin
@@ -34,6 +32,8 @@ services:
       - ./docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
     stdin_open: true
     tty: true
+    entrypoint: "/bin/sh -c"
+    command: '"tail -f /dev/null"'
 
 volumes:
   db-data:

@@ -17,7 +17,7 @@ RUN sudo apt-get update && apt-get install -y \
   python-dev
 
 # condaでインストールするライブラリ
-RUN conda install -c conda-forge pystan \
+RUN conda install -c conda-forge pystan -y \
   && conda install -c conda-forge arviz -y \
   && conda install -c anaconda openpyxl -y
 
