@@ -27,3 +27,6 @@ RUN conda install -c conda-forge pystan -y \
   && pip install japanize-matplotlib \
   && pip install psycopg2-binary \
   && pip install ipython-sql
+
+USER jovyan
+WORKDIR /home/jovyan/work
