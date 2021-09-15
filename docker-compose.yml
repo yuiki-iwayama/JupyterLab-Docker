@@ -10,7 +10,6 @@ services:
     environment:
       - GRANT_SUDO=yes
       - JUPYTER_ENABLE_LAB=yes
-      - PG_PORT=5432
     volumes:
       - ./work:/home/jovyan/work
     command: start-notebook.sh --NotebookApp.token=''
