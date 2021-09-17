@@ -2,7 +2,7 @@
 
 ## Overview
 - JupyterLab-PostgreSQLの相互環境
-- PostgreSQLはすでに別のコンテナとしてbuildされている状態
+- **PostgreSQLはすでに別のコンテナとしてbuildされている状態**
 - encodingはja_JP.UTF-8に設定，timizoneはAsia/Tokyoに設定
 - pystan 2.19.1.1も動かせる
 
@@ -35,5 +35,5 @@ dsl = 'postgres://{user}:{password}@{hostname}/{database}'
 
 ## Document
 - workディレクトリを配置
-- postgresのファイルは↓\
+- PostgreSQLのファイルは↓\
 https://github.com/yuiki-iwayama/PostgreSQL
