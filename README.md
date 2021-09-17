@@ -13,7 +13,7 @@
 ## Install
 ```
 git clone git@github.com:yuiki-iwayama/JupyterLab-Docker.git
-cd JupyterLab-Docker
+cd JupyterLab-JupyterLab-Postgres-Docker
 docker-compose up -d --build
 ```
 
@@ -36,4 +36,4 @@ dsl = 'postgres://{user}:{password}@{hostname}/{database}'
 ## Document
 - workディレクトリを配置
 - postgresのファイルは↓\
-
+https://github.com/yuiki-iwayama/PostgreSQL
