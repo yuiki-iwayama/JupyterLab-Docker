@@ -1,4 +1,4 @@
-# JupyterLab-SQL-Docker
+# JupyterLab-Postgres-Docker
 
 ## Overview
 - JupyterLab-PostgreSQLの相互環境
