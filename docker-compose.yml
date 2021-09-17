@@ -13,30 +13,10 @@ services:
     volumes:
       - ./work:/home/jovyan/work
     command: start-notebook.sh --NotebookApp.token=''
-    depends_on:
-      - db
-    links:
-      - db
-
-  db:
-    image: postgres:13.0-alpine
-    ports:
-      - "15432:5432"
-    environment:
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: admin
-      POSTGRES_DB: analysis
-      POSTGRES_INITDB_ARGS: “--encoding=UTF-8 --locale=ja_JP.UTF-8"
-    volumes:
-      - ./db-data:/var/lib/postgresql/data
-      - ./docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
-    stdin_open: true
-    tty: true
-    entrypoint: "/bin/sh -c"
-    command: '"tail -f /dev/null"'
-
-volumes:
-  db-data:
-    driver: local
-  work:
-    driver: local
+    external_links:
+      - postgres_db
+    networks:
+      - postgres_default
+networks:
+  postgres_default:
+    external: true
