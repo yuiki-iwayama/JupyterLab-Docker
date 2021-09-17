@@ -8,7 +8,15 @@ services:
       - "8888:8888"
     restart: always
     environment:
+      - GRANT_SUDO=yes
       - JUPYTER_ENABLE_LAB=yes
     volumes:
       - ./work:/home/jovyan/work
     command: start-notebook.sh --NotebookApp.token=''
+    external_links:
+      - postgres_db
+    networks:
+      - postgres_default
+networks:
+  postgres_default:
+    external: true
