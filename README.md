@@ -34,3 +34,5 @@ dsl = 'postgres://{user}:{password}@{hostname}/{database}'
 
 ## Document
 - workディレクトリを配置
+- postgresのファイルは↓
+
