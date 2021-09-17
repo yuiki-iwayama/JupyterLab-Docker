@@ -17,7 +17,7 @@ docker-compose up -d --build
 ```
 
 ## Usage
-- JupyterLab
+- JupyterLab\
 http://localhost:8888
 
 - JupyterLabからSQLを動かす
@@ -34,5 +34,5 @@ dsl = 'postgres://{user}:{password}@{hostname}/{database}'
 
 ## Document
 - workディレクトリを配置
-- postgresのファイルは↓
+- postgresのファイルは↓\
 
