@@ -12,9 +12,9 @@
 
 ## Install
 ```
-git clone git@github.com:yuiki-iwayama/JupyterLab-Postgres-Docker.git
-cd JupyterLab-Postgres-Docker
-docker-compose up -d --build
+$ git clone git@github.com:yuiki-iwayama/JupyterLab-Postgres-Docker.git
+$ cd JupyterLab-Postgres-Docker
+$ docker-compose up -d --build
 ```
 
 ## Usage
