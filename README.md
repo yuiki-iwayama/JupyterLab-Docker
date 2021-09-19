@@ -1,8 +1,7 @@
 # JupyterLab-Postgres-Docker
 
 ## Overview
-- JupyterLab-PostgreSQLの相互環境
-- **PostgreSQLはすでに別のコンテナとしてbuildされている状態**
+- JupyterLab-PostgreSQLの相互環境(接続できるかの最低限の設定)
 - encodingはja_JP.UTF-8に設定，timizoneはAsia/Tokyoに設定
 - pystan 2.19.1.1も動かせる
 
@@ -26,14 +25,13 @@ http://localhost:8888
 # SQL の拡張機能を呼び出す
 %load_ext sql
 
-# DB 接続に必要な engine を取得
-dsl = 'postgres://{user}:{password}@{hostname}/{database}'
+# DB 接続に必要な engine を取得（portはコンテナ側を指定する）
+dsl = 'postgres://{user}:{password}@{container_name:port}/{database}'
 
 # sql に接続
 %sql $dsl
 ```
 
 ## Document
-- workディレクトリを配置
-- PostgreSQLのファイルは↓\
-https://github.com/yuiki-iwayama/PostgreSQL-Docker
+- workディレクトリをローカルに配置
+- db-dataディレクトリをローカルに配置
