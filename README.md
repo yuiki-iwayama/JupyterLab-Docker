@@ -31,7 +31,11 @@ dsl = 'postgres://{user}:{password}@{container_name:port}/{database}'
 # sql に接続
 %sql $dsl
 ```
-
+- localからSQLを動かす
+```
+$ docker-compose exec db bash
+# psql -U admin -h localhost -d analysis
+```
 ## Document
 - workディレクトリをローカルに配置
 - db-dataディレクトリをローカルに配置
