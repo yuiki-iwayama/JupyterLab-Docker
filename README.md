@@ -26,14 +26,13 @@ http://localhost:8888
 # SQL の拡張機能を呼び出す
 %load_ext sql
 
-# DB 接続に必要な engine を取得
-dsl = 'postgres://{user}:{password}@{hostname}/{database}'
+# DB 接続に必要な engine を取得（portはコンテナ側を指定する）
+dsl = 'postgres://{user}:{password}@{container_name:port}/{database}'
 
 # sql に接続
 %sql $dsl
 ```
 
 ## Document
-- workディレクトリを配置
-- PostgreSQLのファイルは↓\
-https://github.com/yuiki-iwayama/PostgreSQL-Docker
+- workディレクトリをローカルに配置
+- db-dataディレクトリをローカルに配置
