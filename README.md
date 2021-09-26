@@ -1,4 +1,4 @@
-# JupyterLab-Postgres-Docker
+# PostgreSQL-JupyterLab-Docker
 
 ## Overview
 - JupyterLab-PostgreSQLの相互環境(接続できるかの最低限の設定)
