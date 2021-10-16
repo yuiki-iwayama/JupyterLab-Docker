@@ -37,5 +37,5 @@ $ docker-compose exec db bash
 # psql -U admin -h localhost -d analysis
 ```
 ## Document
-- workディレクトリをローカルに配置
-- db-dataディレクトリをローカルに配置
+- workバインドマウントを./に配置
+- db-dataバインドマウントを./配置
