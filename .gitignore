@@ -1,5 +1,2 @@
-# db-dataはgit管理下に入れない
-db-data
-
 # ipynb_checkpointsはgit管理下に入れない
 /.ipynb_checkpoints

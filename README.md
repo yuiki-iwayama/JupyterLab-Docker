@@ -1,18 +1,20 @@
-# PostgreSQL-JupyterLab-Docker
+# JupyterLab-Docker
 
 ## Overview
-- JupyterLab-PostgreSQLの相互環境(接続できるかの最低限の設定)
+- データサイエンスに最低限必要なJupyterLab（Python3.9）の環境
 - encodingはja_JP.UTF-8に設定，timizoneはAsia/Tokyoに設定
-- pystan 2.19.1.1も動かせる
+- Julia1.7.1に対応
 
 ## 動作環境（確認済）
-- macOS BigSur 11.5.1
-- Docker Desktop(macOS) 20.10.7
+- macOS Monterey 12.0.1
+- Docker Desktop 4.3.2 (for Mac)
 
 ## Install
+- buildする前にrequirements.txtを見て必要なPythonライブラリを適宜追加・変更してください
+- buildする前にpackages.jlを見て必要なJuliaライブラリを適宜・追加変更してください
 ```
-$ git clone git@github.com:yuiki-iwayama/JupyterLab-Postgres-Docker.git
-$ cd JupyterLab-Postgres-Docker
+$ git clone git@github.com:yuiki-iwayama/JupyterLab-Docker.git
+$ cd JupyterLab-Docker
 $ docker-compose up -d --build
 ```
 
@@ -20,22 +22,5 @@ $ docker-compose up -d --build
 - JupyterLab\
 http://localhost:8888
 
-- JupyterLabからSQLを動かす
-```
-# SQL の拡張機能を呼び出す
-%load_ext sql
-
-# DB 接続に必要な engine を取得（portはコンテナ側を指定する）
-dsl = 'postgres://{user}:{password}@{container_name:port}/{database}'
-
-# sql に接続
-%sql $dsl
-```
-- localからSQLを動かす
-```
-$ docker-compose exec db bash
-# psql -U admin -h localhost -d analysis
-```
 ## Document
 - workバインドマウントを./に配置
-- db-dataバインドマウントを./配置
