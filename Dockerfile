@@ -1,24 +1,23 @@
-FROM ubuntu:latest
+FROM python:latest
 USER root
 
-# Ubuntuの設定
+# Debianの設定
 RUN apt-get update && apt-get install -y \
     sudo \
     wget \
     curl \
     fonts-ipaexfont \
-    build-essential \
-    language-pack-ja \
-    libpq-dev
-RUN update-locale LANG=ja_JP.UTF-8
-RUN ln -sf  /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
+    build-essential
+RUN apt-get -y install locales && \
+    localedef -f UTF-8 -i ja_JP ja_JP.UTF-8
+ENV LANG ja_JP.UTF-8
+ENV LANGUAGE ja_JP:ja
+ENV LC_ALL ja_JP.UTF-8
+ENV TZ JST-9
+ENV TERM xterm
 
 # PythonとPythonのライブラリーインストール
 COPY requirements.txt /tmp/requirements.txt
-RUN apt install -y python3.9 \
-    python3-distutils \
-    python3-pip
-RUN update-alternatives --install /usr/bin/python python /usr/bin/python3.9 1
 RUN pip install --upgrade pip \
   && pip install --upgrade setuptools \
   && pip install --no-cache-dir -r /tmp/requirements.txt
