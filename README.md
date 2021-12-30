@@ -8,7 +8,7 @@
 ## 動作環境（確認済）
 - macOS Monterey 12.0.1
 - Docker Desktop 4.3.2 (for Mac)
-※intel Macの方はDockerfileのコメントアウトを書き換えてください
+※intel Macの方はDockerfileのコメントアウト箇所を書き換えてください
 
 ## Install
 - buildする前にrequirements.txtを見て必要なPythonライブラリを適宜追加・変更してください
