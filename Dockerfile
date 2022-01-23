@@ -34,7 +34,6 @@ RUN pip install --upgrade pip \
   && pip install --upgrade setuptools wheel\
   && pip install --no-cache-dir -r /tmp/requirements.txt \
   && rm /tmp/requirements.txt
-  
 # lightgbmのインストール
 RUN git clone --recursive --branch stable --depth 1 https://github.com/Microsoft/LightGBM \
   && cd LightGBM/python-package \
