@@ -16,7 +16,6 @@ RUN apt-get update && apt-get install -y \
     cmake \
     gcc \
     g++ \
-    curl \
     git
 
 # Debianの設定
