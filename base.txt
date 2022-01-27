@@ -1,8 +1,6 @@
 eli5
 lightgbm
 xgboost
-ipython-sql
-psycopg2-binary
 mlxtend
 imbalanced-learn
 jupyterlab-notifications
