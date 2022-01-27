@@ -21,15 +21,11 @@ ENV TZ JST-9
 ENV TERM xterm
 
 # condaでインストール
-RUN conda install -c conda-forge \
-    eli5 \
-    lightgbm \
-    xgboost \
-    ipython-sql \
-    psycopg2-binary \
-    mlxtend \
-    imbalanced-learn \
-  && conda clean -a -y
+COPY base.txt /tmp/base.txt
+RUN conda update -n base -c defaults conda -y \
+  && conda install -n base -c conda-forge --file /tmp/base.txt -y \
+  && conda clean -a -y \
+  && rm /tmp/base.txt
 
 # pipでインストール
 COPY requirements.txt /tmp/requirements.txt
