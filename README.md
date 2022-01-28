@@ -8,7 +8,7 @@
 ## 動作環境（確認済）
 - macOS Monterey 12.0.1
 - Docker Desktop 4.3.2 (for Mac)
-※intel Macの方はJuliaのインストールをx86_64のファイル名に書き換えてください
+※intel Macの方はJuliaのインストールをx86_64のファイル名に書き換えてください\
 https://julialang-s3.julialang.org/bin/linux/x64/1.7/julia-1.7.1-linux-x86_64.tar.gz
 
 
