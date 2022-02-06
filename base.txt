@@ -4,3 +4,6 @@ xgboost
 mlxtend
 imbalanced-learn
 jupyterlab-notifications
+nodejs
+git
+jupyterlab-git
