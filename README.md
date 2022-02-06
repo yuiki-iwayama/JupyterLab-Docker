@@ -4,17 +4,20 @@
 - データサイエンスに最低限必要なJupyterLab（Python3.9）の環境
 - encodingはja_JP.UTF-8に設定，timizoneはJST-9に設定
 - Julia1.7.1に対応
+- GitHub環境をすぐ作れるように対応
 
 ## 動作環境（確認済）
 - macOS Monterey 12.0.1
-- Docker Desktop 4.3.2 (for Mac)
+- Docker Desktop 4.4.2 (for Mac)
 ※intel Macの方はJuliaのインストールをx86_64のファイル名に書き換えてください\
 https://julialang-s3.julialang.org/bin/linux/x64/1.7/julia-1.7.1-linux-x86_64.tar.gz
 
 
 ## Install
-- buildする前にrequirements.txtを見て必要なPythonライブラリを適宜追加・変更してください
+- buildする前にbase.txtとrequirements.txtを見て必要なPythonライブラリを適宜追加・変更してください
 - buildする前にpackages.jlを見て必要なJuliaライブラリを適宜・追加変更してください
+- buildする前に~/.sshにsshキーを作成し，公開鍵をGitHubに登録してください
+-
 ```
 $ git clone git@github.com:yuiki-iwayama/JupyterLab-Docker.git
 $ cd JupyterLab-Docker
