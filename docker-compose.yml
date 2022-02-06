@@ -4,10 +4,18 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        GITHUB_USER: $GITHUB_USER
+        GITHUB_EMAIL: $GITHUB_EMAIL
     container_name: "jupyterlab"
     ports:
       - 8888:8888
     restart: always
     volumes:
       - ./work:/work
-    command: ["jupyter", "lab", "--ip=0.0.0.0", "--allow-root", "--LabApp.token=''"]
+    secrets:
+      - user_ssh_key
+
+secrets:
+  user_ssh_key:
+    file: $SSH_KEY_PATH
