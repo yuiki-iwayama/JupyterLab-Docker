@@ -61,3 +61,6 @@ COPY entrypoint.sh /usr/bin
 RUN apt-get autoremove -y \
   && apt-get clean
 WORKDIR /
+
+ENTRYPOINT ["/bin/bash", "/usr/bin/entrypoint.sh"]
+CMD ["jupyter", "lab", "--ip=0.0.0.0", "--allow-root", "--LabApp.token=''"]
