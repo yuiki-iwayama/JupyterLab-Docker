@@ -37,10 +37,14 @@ RUN pip install --upgrade pip \
 
 # Juliaのインストール
 WORKDIR /opt
+ENV julia julia-1.7.1
 COPY packages.jl /tmp/packages.jl
-RUN wget https://julialang-s3.julialang.org/bin/linux/aarch64/1.7/julia-1.7.1-linux-aarch64.tar.gz \
-  && tar zxvf julia-1.7.1-linux-aarch64.tar.gz \
-  && ln -s /opt/julia-1.7.1/bin/julia /usr/local/bin/julia
+RUN wget https://julialang-s3.julialang.org/bin/linux/aarch64/1.7/${julia}-linux-aarch64.tar.gz \
+  && tar zxvf ${julia}-linux-aarch64.tar.gz \
+  && ln -s /opt/${julia}/bin/julia /usr/local/bin/julia
+# Juliaのライブラリーインストール
+RUN julia /tmp/packages.jl \
+  && rm ${julia}-linux-aarch64.tar.gz /tmp/packages.jl
 # Juliaのライブラリーインストール
 RUN julia /tmp/packages.jl \
   && rm julia-1.7.1-linux-aarch64.tar.gz /tmp/packages.jl
