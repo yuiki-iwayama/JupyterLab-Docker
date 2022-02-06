@@ -45,9 +45,6 @@ RUN wget https://julialang-s3.julialang.org/bin/linux/aarch64/1.7/${julia}-linux
 # Juliaのライブラリーインストール
 RUN julia /tmp/packages.jl \
   && rm ${julia}-linux-aarch64.tar.gz /tmp/packages.jl
-# Juliaのライブラリーインストール
-RUN julia /tmp/packages.jl \
-  && rm julia-1.7.1-linux-aarch64.tar.gz /tmp/packages.jl
 
 # GitHubからsshでcloneする
 ARG GITHUB_USER
