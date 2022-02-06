@@ -9,7 +9,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     cmake \
     gcc \
     g++ \
-    git
+    openssh-client \
+    bash-completion \
+    vim
 
 # Debianの設定
 RUN apt-get -y install locales && \
