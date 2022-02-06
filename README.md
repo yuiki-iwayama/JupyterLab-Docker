@@ -17,7 +17,7 @@ https://julialang-s3.julialang.org/bin/linux/x64/1.7/julia-1.7.1-linux-x86_64.ta
 - buildする前にbase.txtとrequirements.txtを見て必要なPythonライブラリを適宜追加・変更してください
 - buildする前にpackages.jlを見て必要なJuliaライブラリを適宜・追加変更してください
 - buildする前に~/.sshにsshキーを作成し，公開鍵をGitHubに登録してください
--
+- buildする前に.envに必要事項を記載してください
 ```
 $ git clone git@github.com:yuiki-iwayama/JupyterLab-Docker.git
 $ cd JupyterLab-Docker
