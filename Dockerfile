@@ -49,6 +49,15 @@ RUN julia /tmp/packages.jl \
 RUN julia /tmp/packages.jl \
   && rm julia-1.7.1-linux-aarch64.tar.gz /tmp/packages.jl
 
+# GitHubからsshでcloneする
+ARG GITHUB_USER
+ARG GITHUB_EMAIL
+RUN mkdir -p ~/.ssh \
+  && git config --global user.name "${GITHUB_USER}"  \
+  && git config --global user.email "${GITHUB_EMAIL}"
+COPY config /root/.ssh
+COPY entrypoint.sh /usr/bin
+
 RUN apt-get autoremove -y \
   && apt-get clean
 WORKDIR /
