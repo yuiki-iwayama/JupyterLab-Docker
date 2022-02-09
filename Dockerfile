@@ -53,11 +53,10 @@ RUN mkdir -p ~/.ssh \
   && git config --global user.name "${GITHUB_USER}"  \
   && git config --global user.email "${GITHUB_EMAIL}"
 COPY config /root/.ssh
-COPY entrypoint.sh /usr/bin
+COPY init.sh /usr/bin
 
 RUN apt-get autoremove -y \
   && apt-get clean
 WORKDIR /work
 
-ENTRYPOINT ["/bin/bash", "/usr/bin/entrypoint.sh"]
-CMD ["jupyter", "lab", "--ip=0.0.0.0", "--allow-root", "--LabApp.token=''"]
+CMD ["/bin/bash", "/usr/bin/init.sh"]
