@@ -51,7 +51,7 @@ ARG GITHUB_USER
 ARG GITHUB_EMAIL
 RUN mkdir -p ~/.ssh \
   && git config --global user.name "${GITHUB_USER}"  \
-  && git config --global user.email "${GITHUB_EMAIL}"
+  && git config --global user.email ${GITHUB_EMAIL}
 COPY config /root/.ssh
 COPY init.sh /usr/bin
 
