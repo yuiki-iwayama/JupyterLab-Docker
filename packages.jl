@@ -2,5 +2,11 @@ using Pkg
 Pkg.add([
     "IJulia",
     "PyCall",
-    "DataFrames"
+    "DataFrames",
+    "PyPlot",
+    "Distributions",
+    "ForwardDiff",
+    "Statistics",
+    "JuliaFormatter",
+    "RCall"
 ])
