@@ -40,21 +40,19 @@ RUN pip install --upgrade pip \
   && pip install --no-cache-dir -r /tmp/requirements.txt \
   && rm /tmp/requirements.txt
 
-# Rのインストール
-COPY libralies.R /tmp/libralies.R
+# RとRライブラリのインストール
 RUN apt-get update && apt-get install -y r-base
-RUN Rscript -e libralies.R \
-  && rm /tmp/libralies.R
+RUN Rscript -e "install.packages(c('tidyverse', 'dplyr'), dependencies = TRUE, error = TRUE)"
 
 # JuliaとJuliaのパッケージをインストール
 WORKDIR /opt
-ARG julia julia-1.7.2
+ENV JULIA_VERSION julia-1.7.2
 COPY packages.jl /tmp/packages.jl
-RUN wget https://julialang-s3.julialang.org/bin/linux/aarch64/1.7/${julia}-linux-aarch64.tar.gz \
-  && tar zxvf ${julia}-linux-aarch64.tar.gz \
-  && ln -s /opt/${julia}/bin/julia /usr/local/bin/julia \
+RUN wget https://julialang-s3.julialang.org/bin/linux/aarch64/1.7/${JULIA_VERSION}-linux-aarch64.tar.gz \
+  && tar zxvf ${JULIA_VERSION}-linux-aarch64.tar.gz \
+  && ln -s /opt/${JULIA_VERSION}/bin/julia /usr/local/bin/julia \
   && julia /tmp/packages.jl \
-  && rm ${julia}-linux-aarch64.tar.gz /tmp/packages.jl
+  && rm ${JULIA_VERSION}-linux-aarch64.tar.gz /tmp/packages.jl
 
 # GitHubからsshでcloneするための設定
 ARG GITHUB_USER
