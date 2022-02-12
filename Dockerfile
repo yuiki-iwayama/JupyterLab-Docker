@@ -1,6 +1,6 @@
 FROM continuumio/anaconda3:latest
 
-# 必要なパッケージを入れる
+# 必要なパッケージを入れる.
 RUN apt-get update && apt-get install -y --no-install-recommends \
     fonts-ipaexfont \
     libgl1-mesa-dev \
@@ -11,7 +11,12 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     g++ \
     openssh-client \
     bash-completion \
-    vim
+    vim \
+    software-properties-common \
+    dirmngr \
+    gnupg \
+    apt-transport-https \
+    ca-certificates
 
 # Debianの設定
 RUN apt-get -y install locales && \
@@ -35,18 +40,23 @@ RUN pip install --upgrade pip \
   && pip install --no-cache-dir -r /tmp/requirements.txt \
   && rm /tmp/requirements.txt
 
-# Juliaのインストール
+# Rのインストール
+COPY libralies.R /tmp/libralies.R
+RUN apt-get update && apt-get install -y r-base
+RUN Rscript -e libralies.R \
+  && rm /tmp/libralies.R
+
+# JuliaとJuliaのパッケージをインストール
 WORKDIR /opt
-ENV julia julia-1.7.1
+ARG julia julia-1.7.2
 COPY packages.jl /tmp/packages.jl
 RUN wget https://julialang-s3.julialang.org/bin/linux/aarch64/1.7/${julia}-linux-aarch64.tar.gz \
   && tar zxvf ${julia}-linux-aarch64.tar.gz \
-  && ln -s /opt/${julia}/bin/julia /usr/local/bin/julia
-# Juliaのライブラリーインストール
-RUN julia /tmp/packages.jl \
+  && ln -s /opt/${julia}/bin/julia /usr/local/bin/julia \
+  && julia /tmp/packages.jl \
   && rm ${julia}-linux-aarch64.tar.gz /tmp/packages.jl
 
-# GitHubからsshでcloneする
+# GitHubからsshでcloneするための設定
 ARG GITHUB_USER
 ARG GITHUB_EMAIL
 RUN mkdir -p ~/.ssh \
