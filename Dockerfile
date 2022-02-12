@@ -41,8 +41,8 @@ RUN pip install --upgrade pip \
   && rm /tmp/requirements.txt
 
 # RとRライブラリのインストール
-RUN apt-get update && apt-get install -y r-base
-RUN Rscript -e "install.packages(c('tidyverse', 'dplyr'), dependencies = TRUE, error = TRUE)"
+RUN apt-get update && apt-get install -y r-base \
+  && Rscript -e "install.packages(c('tidyverse', 'dplyr'), dependencies = TRUE, error = TRUE)"
 
 # JuliaとJuliaのパッケージをインストール
 WORKDIR /opt
