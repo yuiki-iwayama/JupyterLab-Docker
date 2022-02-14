@@ -3,7 +3,7 @@
 ## Overview
 - データサイエンスに最低限必要なJupyterLab（Python3.9）の環境
 - encodingはja_JP.UTF-8に設定，timizoneはJST-9に設定
-- Julia1.7.1に対応
+- Julia1.7.2に対応
 - GitHub環境をすぐ作れるように対応
 
 ## 動作環境（確認済）
