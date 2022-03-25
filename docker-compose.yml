@@ -9,7 +9,7 @@ services:
         GITHUB_EMAIL: $GITHUB_EMAIL
     container_name: "jupyterlab"
     environment:
-      - DISPLAY=${HOST_NAME}
+      - DISPLAY=${HOST_NAME}:0
     ports:
       - 8888:8888
     restart: always
