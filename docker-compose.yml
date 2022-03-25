@@ -8,11 +8,14 @@ services:
         GITHUB_USER: $GITHUB_USER
         GITHUB_EMAIL: $GITHUB_EMAIL
     container_name: "jupyterlab"
+    environment:
+      - DISPLAY=${HOST_NAME}
     ports:
       - 8888:8888
     restart: always
     volumes:
       - ./work:/work
+      - ~/.Xauthority:/root/.Xauthority
     secrets:
       - user_ssh_key
 

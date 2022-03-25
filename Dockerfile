@@ -16,7 +16,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     dirmngr \
     gnupg \
     apt-transport-https \
-    ca-certificates
+    ca-certificates \
+    xclip
 
 # Debianの設定
 RUN apt-get -y install locales && \
