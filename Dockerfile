@@ -59,11 +59,12 @@ RUN wget https://julialang-s3.julialang.org/bin/linux/aarch64/1.7/${JULIA_VERSIO
 ARG GITHUB_USER
 ARG GITHUB_EMAIL
 RUN mkdir -p ~/.ssh \
-  && git config --global user.name "${GITHUB_USER}"  \
+  && git config --global user.name "${GITHUB_USER}" \
   && git config --global user.email ${GITHUB_EMAIL}
 COPY config /root/.ssh
 COPY init.sh /usr/bin
 
+COPY import_path.pth /opt/conda/lib/python3.9/site-packages/import_path.pth
 RUN apt-get autoremove -y \
   && apt-get clean
 WORKDIR /work
