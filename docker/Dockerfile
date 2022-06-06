@@ -19,9 +19,15 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     ca-certificates \
     xclip
 
-#タイムゾーンの設定
-ENV TZ=Asia/Tokyo
-RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+#Ubuntuの設定
+ENV LANG ja_JP.UTF-8
+ENV LC_ALL ja_JP.UTF-8
+RUN sed -i '$d' /etc/locale.gen && \
+  echo "ja_JP.UTF-8 UTF-8" >> /etc/locale.gen && \
+  locale-gen ja_JP.UTF-8 && \
+  /usr/sbin/update-locale LANG=ja_JP.UTF-8 LANGUAGE="ja_JP:ja"
+RUN /bin/bash -c "source /etc/default/locale"
+RUN ln -sf  /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
 
 # condaでインストール
 COPY ./docker/base.txt /tmp/base.txt
