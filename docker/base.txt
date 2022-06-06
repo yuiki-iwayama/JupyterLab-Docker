@@ -7,3 +7,7 @@ jupyterlab-notifications
 nodejs
 git
 jupyterlab-git
+r-base
+r-irkernel
+r-cli
+r-tidyverse

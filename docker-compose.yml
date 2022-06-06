@@ -1,9 +1,9 @@
 version: "3.8"
 services:
-  notebook:
+  jupyterlab:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: ./docker/Dockerfile
       args:
         GITHUB_USER: $GITHUB_USER
         GITHUB_EMAIL: $GITHUB_EMAIL
