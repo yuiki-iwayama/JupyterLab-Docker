@@ -1,6 +1,6 @@
-FROM continuumio/anaconda3:latest
+FROM jupyter/scipy-notebook:latest
+USER root
 
-# 必要なパッケージを入れる.
 RUN apt-get update && apt-get install -y --no-install-recommends \
     fonts-ipaexfont \
     libgl1-mesa-dev \
@@ -19,14 +19,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     ca-certificates \
     xclip
 
-# Debianの設定
-RUN apt-get -y install locales && \
-    localedef -f UTF-8 -i ja_JP ja_JP.UTF-8
-ENV LANG ja_JP.UTF-8
-ENV LANGUAGE ja_JP:ja
-ENV LC_ALL ja_JP.UTF-8
-ENV TZ JST-9
-ENV TERM xterm
+#タイムゾーンの設定
+ENV TZ=Asia/Tokyo
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 # condaでインストール
 COPY base.txt /tmp/base.txt
